@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -14,6 +15,7 @@ export function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { showToast } = useToast();
+  const [formError, setFormError] = useState<string | null>(null);
 
   const {
     register,
@@ -26,6 +28,7 @@ export function LoginPage() {
   });
 
   const onSubmit = (values: LoginValues) => {
+    setFormError(null);
     login.mutate(values, {
       onSuccess: () => {
         const from = (location.state as { from?: string } | null)?.from ?? '/dashboard';
@@ -36,8 +39,13 @@ export function LoginPage() {
           for (const [path, message] of Object.entries(error.fieldErrors)) {
             setError(path as keyof LoginValues, { message });
           }
+        } else if (error instanceof ApiError) {
+          // Wrong password / unknown email: the message belongs on the form,
+          // next to the field the user can fix — not only in a transient toast.
+          setFormError(error.message);
         } else {
-          showToast(error instanceof Error ? error.message : 'Sign in failed. Please try again.', 'error');
+          setFormError('Sign in failed. Please check your connection and try again.');
+          showToast('Sign in failed. Please check your connection and try again.', 'error');
         }
       },
     });
@@ -55,6 +63,12 @@ export function LoginPage() {
         <p className="mt-1 mb-6 text-[15px] text-muted">Welcome back. Your ledger is where you left it.</p>
 
         <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-4">
+          {formError ? (
+            <div role="alert" className="rounded-[10px] border border-[#f0c9c6] bg-[#ffedea] px-3 py-2 text-[14px] text-[#831c1e]">
+              {formError}
+            </div>
+          ) : null}
+
           <Field label="Email" htmlFor="email" error={errors.email?.message}>
             <Input
               id="email"

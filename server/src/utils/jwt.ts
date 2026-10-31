@@ -11,12 +11,12 @@ export interface AccessTokenPayload {
 
 export function signAccessToken(payload: AccessTokenPayload): string {
   const options: SignOptions = { expiresIn: Math.floor(ACCESS_TTL_MS / 1000) };
-  return jwt.sign(payload, env.JWT_SECRET, options);
+  return jwt.sign(payload, env.JWT_ACCESS_SECRET, options);
 }
 
 export function verifyAccessToken(token: string): AccessTokenPayload {
   try {
-    const decoded = jwt.verify(token, env.JWT_SECRET);
+    const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET);
     if (typeof decoded === 'string' || typeof decoded.sub !== 'string') {
       throw new Error('Malformed token payload');
     }

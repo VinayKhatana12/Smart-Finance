@@ -1,6 +1,8 @@
+import { asyncHandler } from '../utils/asyncHandler.js';
 import { Router } from 'express';
 import { validate } from '../middleware/validate.js';
 import { requireAuth } from '../middleware/requireAuth.js';
+import rateLimit from 'express-rate-limit';
 import * as controller from '../controllers/v1.controller.js';
 import { health } from '../controllers/health.controller.js';
 import {
@@ -32,15 +34,30 @@ v1Router.get('/health', health);
 
 // ---------- auth ----------
 
+// Brute-force protection on credential endpoints (refresh is cookie-authenticated
+// with a 48-byte random token — not a brute-forceable secret).
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 50,
+  standardHeaders: 'draft-7',
+  legacyHeaders: false,
+  handler: (_req, res) => {
+    res.status(429).json({
+      success: false,
+      error: { code: 'RATE_LIMITED', message: 'Too many attempts from this address. Try again in 15 minutes.' },
+    });
+  },
+});
+
 const authRouter = Router();
 authRouter.get('/csrf', controller.csrfToken);
-authRouter.post('/register', validate(registerSchema), controller.register);
-authRouter.post('/login', validate(loginSchema), controller.login);
+authRouter.post('/register', authLimiter, validate(registerSchema), controller.register);
+authRouter.post('/login', authLimiter, validate(loginSchema), controller.login);
+authRouter.post('/forgot', authLimiter, controller.forgotPassword);
 authRouter.post('/logout', requireAuth, controller.logout);
 authRouter.get('/me', requireAuth, controller.me);
 authRouter.post('/refresh', controller.refresh); // the refresh cookie is its own credential
 v1Router.use('/auth', authRouter);
-v1Router.post('/auth/forgot', validate(forgotPasswordSchema), controller.forgotPassword);
 v1Router.post('/auth/reset', validate(resetPasswordSchema), controller.resetPassword);
 
 // ---------- users ----------

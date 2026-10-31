@@ -9,7 +9,10 @@ const envSchema = z.object({
   JWT_SECRET: z.string().default(''),
   JWT_EXPIRES_IN: z.string().default('7d'),
   CLIENT_ORIGIN: z.string().default('http://localhost:5173'),
+  CLIENT_URL: z.string().default(''),
   COOKIE_SAMESITE: z.enum(['lax', 'none']).default('lax'),
+  JWT_ACCESS_SECRET: z.string().default(''),
+  JWT_REFRESH_SECRET: z.string().default(''),
 });
 
 const parsed = envSchema.safeParse(process.env);
@@ -22,14 +25,25 @@ if (!parsed.success) {
 const env = { ...parsed.data };
 export const isProd = env.NODE_ENV === 'production';
 
-if (isProd && env.JWT_SECRET.length < 32) {
-  logger.error('JWT_SECRET must be at least 32 characters in production.');
-  process.exit(1);
+// Back-compat: JWT_SECRET seeds both token secrets when the split names are absent.
+if (env.JWT_ACCESS_SECRET === '' && env.JWT_SECRET !== '') env.JWT_ACCESS_SECRET = env.JWT_SECRET;
+if (env.JWT_REFRESH_SECRET === '' && env.JWT_SECRET !== '') env.JWT_REFRESH_SECRET = env.JWT_SECRET;
+
+if (isProd) {
+  if (env.JWT_ACCESS_SECRET.length < 32 || env.JWT_REFRESH_SECRET.length < 32) {
+    logger.error('JWT_ACCESS_SECRET and JWT_REFRESH_SECRET must each be at least 32 characters in production.');
+    process.exit(1);
+  }
+  if (env.JWT_ACCESS_SECRET === env.JWT_REFRESH_SECRET) {
+    logger.error('JWT_ACCESS_SECRET and JWT_REFRESH_SECRET must be different in production.');
+    process.exit(1);
+  }
 }
-if (!isProd && env.JWT_SECRET === '') {
-  // Dev convenience only: an ephemeral secret so sessions do not outlive the process.
-  env.JWT_SECRET = randomBytes(32).toString('hex');
-  logger.warn('JWT_SECRET is not set — using an ephemeral development secret. Set it in server/.env.');
+if (!isProd && env.JWT_ACCESS_SECRET === '') {
+  // Dev convenience only: ephemeral secrets so sessions do not outlive the process.
+  env.JWT_ACCESS_SECRET = randomBytes(32).toString('hex');
+  env.JWT_REFRESH_SECRET = randomBytes(32).toString('hex');
+  logger.warn('JWT secrets are not set — using ephemeral development secrets. Set them in server/.env.');
 }
 if (isProd && env.DATABASE_URL === '') {
   logger.error('DATABASE_URL is required in production.');

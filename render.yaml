@@ -1,0 +1,33 @@
+# Render.com blueprint for the Smart Finance API.
+# Deploy: Render dashboard → New → Blueprint → point at this repository.
+# Set the env vars below in the Render dashboard (do not commit real secrets).
+
+services:
+  - type: web
+    name: smart-finance-api
+    runtime: node
+    plan: starter
+    rootDir: server
+    buildCommand: npm ci && npx prisma generate && npm run build
+    # prisma migrate deploy runs on every deploy — never `migrate dev` in production
+    preDeployCommand: npx prisma migrate deploy
+    startCommand: node dist/server.js
+    healthCheckPath: /api/v1/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000
+      - key: DATABASE_URL
+        sync: false        # set in dashboard: postgres://… (add ?pgbouncer=true&connection_limit=10 for pooled providers)
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: CLIENT_ORIGIN
+        sync: false        # e.g. https://smart-finance.vercel.app,https://localhost
+      - key: COOKIE_SAMESITE
+        value: none        # required for the Android WebView + cross-site Vercel origin (HTTPS enforced)
+      - key: AI_API_KEY
+        sync: false        # optional — omit to keep the assistant rule-based

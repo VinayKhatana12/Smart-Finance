@@ -1,14 +1,19 @@
-import { createHash, randomBytes } from 'node:crypto';
+import { createHash, createHmac, randomBytes } from 'node:crypto';
 import bcrypt from 'bcryptjs';
 import { Prisma } from '../generated/prisma/client.js';
 import { prisma } from '../db/prisma.js';
 import { signAccessToken } from '../utils/jwt.js';
 import { ApiError } from '../utils/ApiError.js';
+import { env } from '../config/env.js';
 import { REFRESH_TTL_MS } from '../utils/cookies.js';
 import type { RegisterInput } from '../validation/v1.schema.js';
 
 const BCRYPT_ROUNDS = 12;
 const sha256 = (value: string): string => createHash('sha256').update(value).digest('hex');
+// Refresh tokens at rest are HMAC-keyed with the refresh secret: a database
+// snapshot alone cannot be used to mint or validate sessions.
+const keyRefresh = (value: string): string =>
+  createHmac('sha256', env.JWT_REFRESH_SECRET || 'dev-only-pepper').update(value).digest('hex');
 
 export interface SessionTokens {
   accessToken: string;
@@ -37,7 +42,7 @@ async function issueSession(userId: string, email: string): Promise<SessionToken
   const accessToken = signAccessToken({ sub: userId, email });
   const refreshToken = randomBytes(48).toString('hex');
   await prisma.refreshToken.create({
-    data: { userId, tokenHash: sha256(refreshToken), expiresAt: new Date(Date.now() + REFRESH_TTL_MS) },
+    data: { userId, tokenHash: keyRefresh(refreshToken), expiresAt: new Date(Date.now() + REFRESH_TTL_MS) },
   });
   return { accessToken, refreshToken };
 }
@@ -85,7 +90,7 @@ export async function loginUser(input: { email: string; password: string }) {
  * is revoked on the spot.
  */
 export async function refreshSession(presentedToken: string): Promise<{ user: ReturnType<typeof toPublicUser>; tokens: SessionTokens }> {
-  const row = await prisma.refreshToken.findUnique({ where: { tokenHash: sha256(presentedToken) }, include: { user: true } });
+  const row = await prisma.refreshToken.findUnique({ where: { tokenHash: keyRefresh(presentedToken) }, include: { user: true } });
   if (!row) {
     throw new ApiError(401, 'REFRESH_INVALID', 'Your session could not be renewed. Sign in again.');
   }
@@ -100,7 +105,7 @@ export async function refreshSession(presentedToken: string): Promise<{ user: Re
 
 export async function revokeSession(presentedToken: string | undefined): Promise<void> {
   if (!presentedToken) return;
-  await prisma.refreshToken.updateMany({ where: { tokenHash: sha256(presentedToken), revokedAt: null }, data: { revokedAt: new Date() } });
+  await prisma.refreshToken.updateMany({ where: { tokenHash: keyRefresh(presentedToken), revokedAt: null }, data: { revokedAt: new Date() } });
 }
 
 export async function getUserById(id: string) {

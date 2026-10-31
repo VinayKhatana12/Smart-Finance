@@ -2,10 +2,15 @@ import { createHash, randomBytes } from 'node:crypto';
 import bcrypt from 'bcryptjs';
 import { prisma } from '../db/prisma.js';
 import { env, isProd } from '../config/env.js';
+import { createHmac } from 'node:crypto';
 import { ApiError } from '../utils/ApiError.js';
 
 const RESET_TTL_MS = 60 * 60 * 1000; // one hour
 const sha256 = (value: string): string => createHash('sha256').update(value).digest('hex');
+// The reset-token hash is keyed with the refresh secret so a leaked database
+// snapshot cannot be brute-forced back into valid reset links.
+const keyedHash = (value: string): string =>
+  createHmac('sha256', env.JWT_REFRESH_SECRET || 'dev-only-pepper').update(value).digest('hex');
 
 export interface ForgotResult {
   sent: true;
@@ -27,7 +32,7 @@ export async function requestReset(email: string): Promise<ForgotResult> {
   const token = randomBytes(32).toString('hex');
   await prisma.passwordResetToken.deleteMany({ where: { userId: user.id, usedAt: null } });
   await prisma.passwordResetToken.create({
-    data: { userId: user.id, tokenHash: sha256(token), expiresAt: new Date(Date.now() + RESET_TTL_MS) },
+    data: { userId: user.id, tokenHash: keyedHash(token), expiresAt: new Date(Date.now() + RESET_TTL_MS) },
   });
   const resetUrl = `${env.CLIENT_ORIGIN}/reset?token=${token}`;
   if (!isProd) {
@@ -38,7 +43,7 @@ export async function requestReset(email: string): Promise<ForgotResult> {
 }
 
 export async function performReset(token: string, newPassword: string): Promise<void> {
-  const row = await prisma.passwordResetToken.findUnique({ where: { tokenHash: sha256(token) } });
+  const row = await prisma.passwordResetToken.findUnique({ where: { tokenHash: keyedHash(token) } });
   if (!row || row.usedAt || row.expiresAt.getTime() < Date.now()) {
     throw new ApiError(400, 'RESET_TOKEN_INVALID', 'This reset link is invalid or has expired. Request a new one.');
   }

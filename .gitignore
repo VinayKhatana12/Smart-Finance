@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+
+# Builds
+dist/
+build/
+
+# Android / Capacitor build outputs & local config
+client/android/.gradle/
+client/android/app/build/
+client/android/build/
+client/android/local.properties
+client/android/app/src/main/assets/capacitor.config.json
+client/android/app/src/main/assets/capacitor.plugins.json
+*.apk
+*.aab
+.env.capacitor
+
+# Generated code (recreated with `prisma generate` / `npm run build`)
+server/src/generated/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+*.local
+client/android/keystore.properties
+smart-finance-release.keystore
+
+# Taste Skill working artefacts (keep dealt sheets, ignore inspection output)
+.taste-skill/inspect/
+.taste-skill/before/
+.taste-skill/after/
+
+# Agent tooling state
+.zcode/
+
+# Logs, coverage, OS noise
+*.log
+coverage/
+.DS_Store
+Thumbs.db
+
+# Build artifacts kept on disk but not in git (use Releases for distribution)
+*.apk
+*.aab

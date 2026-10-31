@@ -1,0 +1,1587 @@
+{
+ "url": "http://localhost:4173/",
+ "at": "2026-10-29T20:42:27.872Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    1,
+    0.72,
+    0.15,
+    0.24,
+    0.1
+   ],
+   "motion": {
+    "elements": 13,
+    "css": 0,
+    "transitions": 13,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 4456,
+     "screens": 5,
+     "words": 415,
+     "img": 4,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 4,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 0,
+     "uiPictures": 2,
+     "pictureSamples": [
+      "hero-a.jpg",
+      "hero-b.jpg",
+      "hero-c.jpg",
+      "detail.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Smart Finance",
+     "words": 2,
+     "chars": 13,
+     "lines": 1,
+     "size": 42,
+     "vw": 2.9,
+     "font": "Manrope Variable",
+     "weight": 500,
+     "tracking": -0.025,
+     "leading": 1,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.19,
+     "top": 11,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Smart Finance",
+     "words": 2,
+     "lines": 1,
+     "size": 42,
+     "font": "Manrope Variable"
+    },
+    "headings": [
+     {
+      "text": "Smart Finance",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 42,
+      "vw": 2.9,
+      "font": "Manrope Variable",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.19,
+      "top": 11,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "The whole picture",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Manrope Variable",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "right",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 1568,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "How does it work?",
+      "words": 4,
+      "chars": 17,
+      "lines": 1,
+      "size": 32,
+      "vw": 2.2,
+      "font": "Manrope Variable",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.76,
+      "top": 2839,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 3,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 4,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Manrope Variable",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      17,
+      18,
+      21,
+      32,
+      36,
+      42
+     ],
+     "sizeCount": 8,
+     "notLoaded": [],
+     "body": {
+      "font": "Manrope Variable",
+      "size": 17,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 15.5
+     },
+     "measureChars": 88,
+     "max": {
+      "size": 42,
+      "vw": 2.9,
+      "font": "Manrope Variable",
+      "text": "Smart Finance"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.03,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f3f5f7",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.2,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f3f5f7",
+       "top": 0,
+       "hsl": {
+        "h": 210,
+        "s": 0.2,
+        "l": 0.96
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#5c6064",
+       "share": 0.51
+      },
+      {
+       "color": "#1b1d1f",
+       "share": 0.42
+      },
+      {
+       "color": "#e6e8ea",
+       "share": 0.04
+      },
+      {
+       "color": "#0a3a80",
+       "share": 0.02
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#f3f5f7",
+      "hsl": {
+       "h": 210,
+       "s": 0.2,
+       "l": 0.96
+      },
+      "fg": "#1b1d1f"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 1,
+     "radius": 10,
+     "height": 36,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Create free account"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 5,
+     "boxRadius": 16,
+     "squareMedia": 4,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 1
+     },
+     {
+      "type": "img",
+      "ratio": 1
+     },
+     {
+      "type": "img",
+      "ratio": 1
+     }
+    ],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 64,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "manrope variable"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 4456,
+    "margins": {
+     "left": 40,
+     "right": 187
+    },
+    "sections": [
+     {
+      "sel": "div.relative.h-[100svh]",
+      "tag": "div",
+      "top": 0,
+      "height": 900,
+      "words": 20,
+      "media": 2,
+      "middle": 226,
+      "heading": {
+       "text": "Smart Finance",
+       "size": 42,
+       "tag": "h1"
+      },
+      "left": 40,
+      "right": 56,
+      "textLeft": 40,
+      "textRight": 56,
+      "fullBleed": true,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "img.h-[60svh].w-full",
+      "tag": "img",
+      "top": 900,
+      "height": 540,
+      "words": 0,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": null,
+      "right": null,
+      "textLeft": null,
+      "textRight": null,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#features.px-5.pb-24",
+      "tag": "section",
+      "top": 1440,
+      "height": 1303,
+      "words": 170,
+      "media": 0,
+      "middle": 71,
+      "heading": {
+       "text": "The whole picture",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 127,
+      "right": 246,
+      "textLeft": 127,
+      "textRight": 247,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#how.px-5.py-24",
+      "tag": "section",
+      "top": 2743,
+      "height": 982,
+      "words": 134,
+      "media": 0,
+      "middle": 187,
+      "heading": {
+       "text": "How does it work?",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 170,
+      "right": 187,
+      "textLeft": 170,
+      "textRight": 187,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.px-5.pb-[20svh]",
+      "tag": "section",
+      "top": 3725,
+      "height": 572,
+      "words": 18,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 448,
+      "right": 568,
+      "textLeft": 448,
+      "textRight": 568,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.px-5.pb-8",
+      "tag": "footer",
+      "top": 4297,
+      "height": 159,
+      "words": 72,
+      "media": 0,
+      "middle": 401,
+      "heading": null,
+      "left": 40,
+      "right": 40,
+      "textLeft": 40,
+      "textRight": 40,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 3608,
+      "height": 384
+     }
+    ],
+    "h1s": [
+     {
+      "text": "Smart Finance",
+      "size": 42,
+      "top": 11,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 170,
+      "n": 4
+     },
+     {
+      "x": 40,
+      "n": 1
+     },
+     {
+      "x": 448,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 6,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.99,
+    0.78,
+    0.36,
+    0.46,
+    0.19
+   ],
+   "motion": {
+    "elements": 15,
+    "css": 0,
+    "transitions": 15,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 5042,
+     "screens": 4.9,
+     "words": 412,
+     "img": 4,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 4,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 0,
+     "uiPictures": 2,
+     "pictureSamples": [
+      "hero-a.jpg",
+      "hero-b.jpg",
+      "hero-c.jpg",
+      "detail.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Smart Finance",
+     "words": 2,
+     "chars": 13,
+     "lines": 1,
+     "size": 32,
+     "vw": 4.2,
+     "font": "Manrope Variable",
+     "weight": 500,
+     "tracking": -0.025,
+     "leading": 1,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.27,
+     "top": 16,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Smart Finance",
+     "words": 2,
+     "lines": 1,
+     "size": 32,
+     "font": "Manrope Variable"
+    },
+    "headings": [
+     {
+      "text": "Smart Finance",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Manrope Variable",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.27,
+      "top": 16,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "The whole picture",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 36,
+      "vw": 4.7,
+      "font": "Manrope Variable",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 1734,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "How does it work?",
+      "words": 4,
+      "chars": 17,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Manrope Variable",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 3310,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 3,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 4,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Manrope Variable",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      17,
+      18,
+      21,
+      32,
+      36
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Manrope Variable",
+      "size": 17,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 15.5
+     },
+     "measureChars": 88,
+     "max": {
+      "size": 36,
+      "vw": 4.7,
+      "font": "Manrope Variable",
+      "text": "The whole picture"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.03,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f3f5f7",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.2,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f3f5f7",
+       "top": 0,
+       "hsl": {
+        "h": 210,
+        "s": 0.2,
+        "l": 0.96
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#5c6064",
+       "share": 0.52
+      },
+      {
+       "color": "#1b1d1f",
+       "share": 0.44
+      },
+      {
+       "color": "#e6e8ea",
+       "share": 0.02
+      },
+      {
+       "color": "#0a3a80",
+       "share": 0.02
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#f3f5f7",
+      "hsl": {
+       "h": 210,
+       "s": 0.2,
+       "l": 0.96
+      },
+      "fg": "#1b1d1f"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 1,
+     "radius": 10,
+     "height": 36,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Create free account"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 5,
+     "boxRadius": 16,
+     "squareMedia": 4,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 1
+     },
+     {
+      "type": "img",
+      "ratio": 1
+     },
+     {
+      "type": "img",
+      "ratio": 1
+     }
+    ],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 64,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "manrope variable"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 5042,
+    "margins": {
+     "left": 40,
+     "right": 57
+    },
+    "sections": [
+     {
+      "sel": "div.relative.h-[100svh]",
+      "tag": "div",
+      "top": 0,
+      "height": 1024,
+      "words": 11,
+      "media": 1,
+      "middle": 53,
+      "heading": {
+       "text": "Smart Finance",
+       "size": 32,
+       "tag": "h1"
+      },
+      "left": 40,
+      "right": 56,
+      "textLeft": 40,
+      "textRight": 56,
+      "fullBleed": true,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "img.h-[60svh].w-full",
+      "tag": "img",
+      "top": 1024,
+      "height": 614,
+      "words": 0,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": null,
+      "right": null,
+      "textLeft": null,
+      "textRight": null,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#features.px-5.pb-24",
+      "tag": "section",
+      "top": 1638,
+      "height": 1576,
+      "words": 175,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "The whole picture",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 40,
+      "right": 114,
+      "textLeft": 40,
+      "textRight": 114,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#how.px-5.py-24",
+      "tag": "section",
+      "top": 3214,
+      "height": 991,
+      "words": 134,
+      "media": 0,
+      "middle": 49,
+      "heading": {
+       "text": "How does it work?",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 40,
+      "right": 57,
+      "textLeft": 40,
+      "textRight": 57,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.px-5.pb-[20svh]",
+      "tag": "section",
+      "top": 4205,
+      "height": 634,
+      "words": 18,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 246,
+      "right": 98,
+      "textLeft": 246,
+      "textRight": 98,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.px-5.pb-8",
+      "tag": "footer",
+      "top": 4839,
+      "height": 203,
+      "words": 72,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 40,
+      "right": 40,
+      "textLeft": 40,
+      "textRight": 40,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 4096,
+      "height": 416
+     }
+    ],
+    "h1s": [
+     {
+      "text": "Smart Finance",
+      "size": 32,
+      "top": 16,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 40,
+      "n": 7
+     },
+     {
+      "x": 246,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 8,
+    "bodySize": 17,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 7,
+   "filled": [
+    1,
+    0.71,
+    0.73,
+    0.29,
+    0.71,
+    0.26,
+    0.23
+   ],
+   "motion": {
+    "elements": 16,
+    "css": 0,
+    "transitions": 16,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 5387,
+     "screens": 6.4,
+     "words": 415,
+     "img": 4,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 4,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 0,
+     "uiPictures": 2,
+     "pictureSamples": [
+      "hero-a.jpg",
+      "hero-b.jpg",
+      "hero-c.jpg",
+      "detail.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Smart Finance",
+     "words": 2,
+     "chars": 13,
+     "lines": 1,
+     "size": 32,
+     "vw": 8.2,
+     "font": "Manrope Variable",
+     "weight": 500,
+     "tracking": -0.025,
+     "leading": 1,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.52,
+     "top": 16,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Smart Finance",
+     "words": 2,
+     "lines": 1,
+     "size": 32,
+     "font": "Manrope Variable"
+    },
+    "headings": [
+     {
+      "text": "Smart Finance",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Manrope Variable",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.52,
+      "top": 16,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "The whole picture",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Manrope Variable",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 1446,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "$24,318.60",
+      "words": 1,
+      "chars": 10,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Manrope Variable",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.3,
+      "top": 1647,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "How does it work?",
+      "words": 4,
+      "chars": 17,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Manrope Variable",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 3216,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 4,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Manrope Variable",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      17,
+      18,
+      28,
+      32
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Manrope Variable",
+      "size": 17,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 15.5
+     },
+     "measureChars": 50,
+     "max": {
+      "size": 32,
+      "vw": 8.2,
+      "font": "Manrope Variable",
+      "text": "Smart Finance"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.03,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f3f5f7",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.2,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f3f5f7",
+       "top": 0,
+       "hsl": {
+        "h": 210,
+        "s": 0.2,
+        "l": 0.96
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 1594,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#5c6064",
+       "share": 0.51
+      },
+      {
+       "color": "#1b1d1f",
+       "share": 0.42
+      },
+      {
+       "color": "#f3f5f7",
+       "share": 0.02
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.02
+      },
+      {
+       "color": "#0a3a80",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#1d5fd6",
+      "hsl": {
+       "h": 219,
+       "s": 0.76,
+       "l": 0.48
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 1,
+     "radius": 10,
+     "height": 44,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Create free account"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 5,
+     "boxRadius": 16,
+     "squareMedia": 4,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 1
+     },
+     {
+      "type": "img",
+      "ratio": 1
+     },
+     {
+      "type": "img",
+      "ratio": 1
+     }
+    ],
+    "nav": {
+     "links": 0,
+     "fixed": true,
+     "height": 64,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "manrope variable"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 5387,
+    "margins": {
+     "left": 20,
+     "right": 26
+    },
+    "sections": [
+     {
+      "sel": "div.relative.h-[100svh]",
+      "tag": "div",
+      "top": 0,
+      "height": 844,
+      "words": 14,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Smart Finance",
+       "size": 32,
+       "tag": "h1"
+      },
+      "left": 20,
+      "right": 27,
+      "textLeft": 20,
+      "textRight": 27,
+      "fullBleed": true,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "img.h-[60svh].w-full",
+      "tag": "img",
+      "top": 844,
+      "height": 506,
+      "words": 0,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": null,
+      "right": null,
+      "textLeft": null,
+      "textRight": null,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#features.px-5.pb-24",
+      "tag": "section",
+      "top": 1350,
+      "height": 1770,
+      "words": 175,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "The whole picture",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 30,
+      "textLeft": 20,
+      "textRight": 30,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#how.px-5.py-24",
+      "tag": "section",
+      "top": 3120,
+      "height": 1396,
+      "words": 134,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "How does it work?",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 21,
+      "textLeft": 20,
+      "textRight": 21,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.px-5.pb-[20svh]",
+      "tag": "section",
+      "top": 4516,
+      "height": 535,
+      "words": 18,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 42,
+      "textLeft": 20,
+      "textRight": 42,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.px-5.pb-8",
+      "tag": "footer",
+      "top": 5052,
+      "height": 335,
+      "words": 72,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 25,
+      "textLeft": 20,
+      "textRight": 25,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 4400,
+      "height": 368
+     }
+    ],
+    "h1s": [
+     {
+      "text": "Smart Finance",
+      "size": 32,
+      "top": 16,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 8
+     }
+    ],
+    "leftBlocks": 8,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "FAIL",
+   "id": "off-centre",
+   "width": 1440,
+   "message": "The page sits off-centre: its content comes to 40px from the left edge but only to 187px from the right, at 1440px.",
+   "fix": "Give the page one pair of equal margins. Check the wrapper for a max-width without margin-inline: auto, a grid with an empty last column, or padding on one side only. If one side is meant to hold air, it must still be closed by something that reaches the margin (a picture, the navigation's last item, a figure)."
+  },
+  {
+   "level": "WARN",
+   "id": "blank-gap",
+   "width": 1440,
+   "message": "A 384px stretch at 3608px holds nothing.",
+   "fix": "Check that it is a deliberate rest (once per page at most); otherwise close it to the normal section gap.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "still-page",
+   "width": 1440,
+   "message": "Little motion: 13 element(s) moved while the page loaded and scrolled.",
+   "fix": "Give every section an entrance for its parts (not one fade of the whole block) and add one moving picture: a looping clip or a slow move on a photograph."
+  },
+  {
+   "level": "FAIL",
+   "id": "empty-screens",
+   "width": 1440,
+   "message": "2 of 5 desktop screens are almost empty ground (under 20% of the screen holds text, a picture or a colour field): screens 3, 5.",
+   "fix": "An empty screen is a rest only once per page. Elsewhere it means the section is underbuilt: set its content larger, give it the full information, put it on a colour field, or cut it."
+  },
+  {
+   "level": "WARN",
+   "id": "off-centre",
+   "width": 768,
+   "message": "The margins differ: 40px on the left, 57px on the right, at 768px.",
+   "fix": "Put the navigation and the content on one pair of margins; check for padding on one side only, a scrollbar gutter, or a header on another inset than the page."
+  },
+  {
+   "level": "WARN",
+   "id": "name-only-title",
+   "width": 768,
+   "message": "The h1 is a bare name (\"Smart Finance\") and nothing else on the first screen says what this is.",
+   "fix": "Keep the name if it leads, and give the line under it (18px or more) the plain words: what it is, for whom, where or when. In the study of 97 Sites of the Day, first screens that named nothing lost usability and content points."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\BALBIR CC\\Downloads\\skill set\\infosys\\PLACEMENT\\My Build\\Smart Finance\\client\\.taste-skill\\inspect\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\BALBIR CC\\Downloads\\skill set\\infosys\\PLACEMENT\\My Build\\Smart Finance\\client\\.taste-skill\\inspect\\desktop-page-01.jpg",
+    "C:\\Users\\BALBIR CC\\Downloads\\skill set\\infosys\\PLACEMENT\\My Build\\Smart Finance\\client\\.taste-skill\\inspect\\desktop-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\BALBIR CC\\Downloads\\skill set\\infosys\\PLACEMENT\\My Build\\Smart Finance\\client\\.taste-skill\\inspect\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\BALBIR CC\\Downloads\\skill set\\infosys\\PLACEMENT\\My Build\\Smart Finance\\client\\.taste-skill\\inspect\\tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\BALBIR CC\\Downloads\\skill set\\infosys\\PLACEMENT\\My Build\\Smart Finance\\client\\.taste-skill\\inspect\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\BALBIR CC\\Downloads\\skill set\\infosys\\PLACEMENT\\My Build\\Smart Finance\\client\\.taste-skill\\inspect\\mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

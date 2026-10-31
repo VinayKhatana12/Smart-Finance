@@ -1,0 +1,285 @@
+// Smart Finance — Prisma schema (PostgreSQL)
+// Money is BigInt paise everywhere; balances are computed from the ledger, never stored.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Currency {
+  INR
+  USD
+  EUR
+  GBP
+  AUD
+  CAD
+  JPY
+}
+
+enum AccountType {
+  CASH
+  BANK
+  WALLET
+  OTHER
+}
+
+enum CategoryType {
+  INCOME
+  EXPENSE
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+  TRANSFER
+}
+
+enum GoalStatus {
+  ACTIVE
+  ACHIEVED
+  ARCHIVED
+}
+
+model User {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name         String
+  email        String   @unique
+  passwordHash String
+  currency     Currency @default(INR)
+  timezone     String?
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  accounts        Account[]
+  categories      Category[]
+  transactions    Transaction[]
+  budgets         Budget[]
+  savingsGoals    SavingsGoal[]
+  goalContribs    GoalContribution[]
+  refreshTokens   RefreshToken[]
+  passwordResets  PasswordResetToken[]
+  notifications   Notification[]
+  recurringRules  RecurringRule[]
+
+  @@map("users")
+}
+
+model Account {
+  id                  String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId              String      @map("user_id") @db.Uuid
+  name                String
+  accountType         AccountType @default(BANK) @map("account_type")
+  openingBalancePaise BigInt      @default(0) @map("opening_balance_paise")
+  currency            Currency    @default(INR)
+  createdAt           DateTime    @default(now()) @map("created_at")
+  updatedAt           DateTime    @updatedAt @map("updated_at")
+
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+  transfersIn  Transaction[]  @relation("TransferLeg")
+  recurring    RecurringRule[]
+
+  @@index([userId])
+  @@map("accounts")
+}
+
+model Category {
+  id        String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String?      @map("user_id") @db.Uuid // null = system category, shared by every user
+  name      String
+  type      CategoryType
+  icon      String       @default("tag")
+  color     String       @default("#5c6064")
+  createdAt DateTime     @default(now()) @map("created_at")
+
+  user         User?          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+  budgets      Budget[]
+  recurring    RecurringRule[]
+
+  @@unique([userId, name, type])
+  @@index([userId])
+  @@map("categories")
+}
+
+model Transaction {
+  id               String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId           String          @map("user_id") @db.Uuid
+  accountId        String          @map("account_id") @db.Uuid
+  categoryId       String          @map("category_id") @db.Uuid
+  // TRANSFER moves money out of `account` and into `transferAccount` without
+  // touching income/expense totals. The added nullable field is what makes the
+  // single-row transfer representable; everything else follows the spec as written.
+  transferAccountId String?        @map("transfer_account_id") @db.Uuid
+  type             TransactionType
+  amountPaise      BigInt          @map("amount_paise")
+  description      String          @default("")
+  transactionDate  DateTime        @map("transaction_date") @db.Timestamptz(3)
+  notes            String          @default("")
+  // Idempotency key for machine-generated transactions (recurring rules):
+  // "rule:{ruleId}:{YYYY-MM-DD}" — one transaction per rule per due day.
+  occurrenceKey    String?         @unique @map("occurrence_key")
+  // Idempotency key for client-submitted transactions (offline queue replay):
+  // a UUID generated on the device, so a retried sync never double-books.
+  clientRequestId  String?         @unique @map("client_request_id") @db.Uuid
+  createdAt        DateTime        @default(now()) @map("created_at")
+  updatedAt        DateTime        @updatedAt @map("updated_at")
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  account         Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  category        Category @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  transferAccount Account? @relation("TransferLeg", fields: [transferAccountId], references: [id], onDelete: SetNull)
+  recurringRule   RecurringRule? @relation(fields: [recurringRuleId], references: [id], onDelete: SetNull)
+  recurringRuleId String?        @map("recurring_rule_id") @db.Uuid
+
+  @@index([userId, transactionDate(sort: Desc)])
+  @@index([userId, type, categoryId])
+  @@index([accountId])
+  @@index([transferAccountId])
+  @@index([recurringRuleId])
+  @@map("transactions")
+}
+
+enum RecurrenceFrequency {
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
+
+model RecurringRule {
+  id          String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId      String              @map("user_id") @db.Uuid
+  accountId   String              @map("account_id") @db.Uuid
+  categoryId  String              @map("category_id") @db.Uuid
+  type        TransactionType
+  title       String
+  amountPaise BigInt              @map("amount_paise")
+  frequency   RecurrenceFrequency
+  startDate   DateTime            @map("start_date") @db.Date
+  endDate     DateTime?           @map("end_date") @db.Date
+  active      Boolean             @default(true)
+  lastRunDate DateTime?           @map("last_run_date") @db.Date
+  nextRunDate DateTime            @map("next_run_date") @db.Date
+  createdAt   DateTime            @default(now()) @map("created_at")
+  updatedAt   DateTime            @updatedAt @map("updated_at")
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  account      Account       @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  category     Category      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+
+  @@index([userId])
+  @@index([active, nextRunDate])
+  @@map("recurring_rules")
+}
+
+enum NotificationType {
+  BUDGET_WARNING
+  BUDGET_LIMIT
+  BUDGET_EXCEEDED
+  RECURRING_BOOKED
+  SYSTEM
+}
+
+model Notification {
+  id        String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String           @map("user_id") @db.Uuid
+  type      NotificationType
+  severity  String           @default("info") // info | warning | danger
+  title     String
+  body      String
+  // Deterministic identity for deduplication, e.g. "budget:{id}:80:2026-10".
+  // Two alerts for the same budget threshold in the same month cannot coexist.
+  dedupKey  String?          @map("dedup_key")
+  readAt    DateTime?        @map("read_at")
+  createdAt DateTime         @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, dedupKey])
+  @@index([userId, readAt])
+  @@index([userId, createdAt(sort: Desc)])
+  @@map("notifications")
+}
+
+model Budget {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId     String   @map("user_id") @db.Uuid
+  categoryId String   @map("category_id") @db.Uuid
+  month      Int // 1..12
+  year       Int
+  limitPaise BigInt   @map("limit_paise")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, categoryId, month, year])
+  @@map("budgets")
+}
+
+model SavingsGoal {
+  id          String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId      String     @map("user_id") @db.Uuid
+  title       String
+  targetPaise BigInt     @map("target_paise")
+  deadline    DateTime?  @db.Date
+  status      GoalStatus @default(ACTIVE)
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+
+  user          User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  contributions GoalContribution[]
+
+  @@index([userId, status])
+  @@map("savings_goals")
+}
+
+model GoalContribution {
+  id               String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  goalId           String   @map("goal_id") @db.Uuid
+  userId           String   @map("user_id") @db.Uuid
+  amountPaise      BigInt   @map("amount_paise")
+  contributionDate DateTime @map("contribution_date") @db.Timestamptz(3) @default(now())
+  notes            String   @default("")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  goal SavingsGoal @relation(fields: [goalId], references: [id], onDelete: Cascade)
+  user User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([goalId, contributionDate])
+  @@map("goal_contributions")
+}
+
+model RefreshToken {
+  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String    @map("user_id") @db.Uuid
+  tokenHash String    @unique @map("token_hash")
+  expiresAt DateTime  @map("expires_at")
+  revokedAt DateTime? @map("revoked_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("refresh_tokens")
+}
+
+model PasswordResetToken {
+  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String    @map("user_id") @db.Uuid
+  tokenHash String    @unique @map("token_hash")
+  expiresAt DateTime  @map("expires_at")
+  usedAt    DateTime? @map("used_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("password_reset_tokens")
+}

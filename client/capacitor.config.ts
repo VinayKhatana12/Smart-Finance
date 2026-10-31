@@ -17,6 +17,13 @@ const config: CapacitorConfig = {
     // The WebView may not be visible behind system bars on notched devices.
     adjustMarginsForEdgeToEdge: 'auto',
   },
+  plugins: {
+    // Route fetch through the native HTTP stack: no WebView CORS/mixed-content
+    // issues against the API, and cookies are handled by the Android CookieManager.
+    CapacitorHttp: {
+      enabled: true,
+    },
+  },
   server: {
     // Never ship a live-reload configuration in release builds.
     androidScheme: 'https',
